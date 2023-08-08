@@ -1,0 +1,52 @@
+﻿@model DoAn_CNPM.Models.PriceList
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style=" width: 100%; ">
+    <h2 style="text-align: center">XÓA BẢNG GIÁ KHÁM</h2>
+    <div>
+       
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên bảng giá khám
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NamePriceList)
+            </dd>
+            <br />
+            <dt>
+                Đơn giá
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <br />
+            <dt>
+                Tên loại bệnh
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.NameCat)
+            </dd>
+
+            <dd>
+                <br />
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Xóa" class="btn btn-danger" />
+                }
+            </dd>
+        </dl>
+
+        <div>
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    </div>
+</div>

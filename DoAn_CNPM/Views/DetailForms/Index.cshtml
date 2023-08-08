@@ -1,0 +1,111 @@
+﻿@model IEnumerable<DoAn_CNPM.Models.DetailForm>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style=" width: 100%; ">
+    <h2 style="text-align: center; padding-top: 20px">CHI TIẾT ĐƠN KHÁM</h2>
+    <hr />
+    <div class="form-group form-inline" style="border: 3px solid #00E216; height: 70px; text-align: center; padding: 15px; ">
+        @using (Html.BeginForm("Index", "DetailForms", FormMethod.Get))
+        {
+            <table>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Tạo mới", "Create", null, new { @class = "btn btn-success" })
+                    </td>
+                    <td style="padding-left:30px">
+                        Tìm ID đơn khám chi tiết  : <input type="text" name="SearchString" style="padding-right:8px"/>
+                        <span style="padding-right:16px"> </span>
+                        Tìm tên bảng giá khám  : <input type="text" name="SearchString1" />
+                        <input type="submit" value="Tìm kiếm" class="btn btn-info" />
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+    <table class="table table-hover table-striped table-bordered">
+        <tr>
+            <th>
+                STT
+            </th>
+
+            <th>
+                ID Đơn khám
+            </th>
+            <th>
+                Tên bảng giá khám
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Đơn giá
+            </th>
+            <th>
+                Tổng tiền
+            </th>
+            <th>
+                Trạng thái thanh toán
+            </th>
+            <th>
+                Chức năng thanh toán
+            </th>
+            <th>Chức năng Sửa - Xóa</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            decimal price = Convert.ToDecimal(item.PriceList.Price);
+            decimal total = Convert.ToDecimal(item.Quantity * item.PriceList.Price);
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdDetailForm)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Form.IdForm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriceList.NamePriceList)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @price.ToString("#,##0").Replace(',', '.') VNĐ
+                </td>
+                <td>
+                    @total.ToString("#,##0").Replace(',', '.') VNĐ
+                </td>
+                <td>
+                    @if (item.IsPay == true)
+                    {
+                    <span style="color:forestgreen"> <b>Đã thanh toán</b></span>
+                    }
+                    else
+                    {
+                     <span style="color:red"> <b>Chưa thanh toán</b></span>
+                    }
+                    
+                </td>
+                <td style="color:white">
+                    @using (Html.BeginForm("UpdatePaymentStatus", "DetailForms", new { id = item.IdDetailForm }, FormMethod.Post))
+                    {
+                        <input type="submit" value="Thanh toán" class="btn btn-success"/>
+                    }
+                    
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.IdDetailForm }, new { @class = "btn btn-warning" })
+                   
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.IdDetailForm }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

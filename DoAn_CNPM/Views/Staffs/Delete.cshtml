@@ -1,0 +1,52 @@
+﻿@model DoAn_CNPM.Models.Staff
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style=" width: 100%; ">
+    <h2 style="text-align: center">XÓA NHÂN VIÊN</h2>
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Họ tên Nhân viên
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NameStaff)
+            </dd>
+            <br />
+            <dt>
+                Số điện thoại
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneStaff)
+            </dd>
+            <br />
+            <dt>
+                Mail
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MailStaff)
+            </dd>
+
+            <dd>
+                <br />
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Xóa" class="btn btn-danger" />
+                }
+            </dd>
+        </dl>
+
+        <div>
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    </div>
+</div>

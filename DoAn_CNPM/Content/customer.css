@@ -1,0 +1,91 @@
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+i {
+    font-size: 28px;
+    margin-top: 30px;
+    margin-left: 40px;
+    color: #000;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    font-weight: 700;
+    position: relative;
+    bottom: 20px;
+}
+table{
+    border: 2px solid black;
+}
+table {
+    width: 90%;
+    height: 600px;
+}
+.row1 th {
+    height: 40px;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    font-size: 20px;
+}
+.row1_1 {
+    width: 80px;
+}
+.row1_2 {
+    width: 180px;
+}
+.row1_4 {
+    width: 300px;
+}
+.table .row th {
+    height: 30px;
+    border-left: 2px solid black;
+}
+.row1 {
+    background-color: azure;
+}
+.row3 ,.row4, .row5, .row6, .row7, .row8, .row9 {
+    background-color: antiquewhite;
+}
+.tool {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+button {
+    margin-top: 30px;
+    height: 55px;
+    width: 150px;
+    border-radius: 15px;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+}
+.button1 {
+    background-color: #89f0a6;
+}
+.button2 {
+    margin-left: 50px;
+    background-color: #ff8282;
+}
+.button3 {
+    margin-left: 50px;
+    background-color: #7f9be5;
+    
+}
+.button1:hover {
+    background-color: #a9ecbc;
+    border: 3px solid #ff8282;
+}
+.button2:hover {
+    background-color: #f19e9e;
+    border: 3px solid #89f0a6;
+}
+.button3:hover {
+    background-color: #9caede;
+    border: 3px solid #ff8282;
+}
